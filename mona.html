@@ -1,0 +1,1234 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07110c">
+<title>WILD WORLD | دنیای حیات وحش</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --green: #a5ff78;
+    --bg: #07110c;
+    --panel: #101e15;
+    --muted: #b2c0b4;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Vazirmatn', sans-serif;
+    background: var(--bg);
+    color: #f5f8f3;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input {
+    font: inherit;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    padding: 20px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #07110c65;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #ffffff18;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: 900;
+    direction: ltr;
+}
+
+.logo span {
+    color: var(--green);
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+nav a {
+    font-size: 14px;
+    color: #e4ece4;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--green);
+}
+
+.nav-cta {
+    background: var(--green);
+    color: #07110c;
+    padding: 10px 16px;
+    border-radius: 7px;
+    font-weight: 800;
+}
+
+.menu-toggle {
+    display: none;
+    color: white;
+    background: transparent;
+    border: 1px solid #ffffff40;
+    padding: 6px 12px;
+    border-radius: 7px;
+    font-size: 23px;
+    cursor: pointer;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    align-items: center;
+    padding: 140px 9% 100px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.hero-video,
+.hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+.hero-image {
+    display: none;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+        linear-gradient(270deg, #06110bf2 0%, #06110bb0 48%, #06110b35 100%),
+        linear-gradient(0deg, var(--bg), transparent 35%);
+}
+
+.hero-content {
+    max-width: 720px;
+    animation: appear 1s ease;
+}
+
+.eyebrow {
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 6vw, 78px);
+    line-height: 1.35;
+    margin: 22px 0;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--green);
+}
+
+.hero p {
+    color: #d4e0d5;
+    line-height: 2.3;
+    font-size: 16px;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    margin-top: 28px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 8px;
+    border: 1px solid #ffffff50;
+    transition: .3s;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-green {
+    background: var(--green);
+    border-color: var(--green);
+    color: #07110c;
+    font-weight: 800;
+}
+
+.hero-label {
+    position: absolute;
+    bottom: 25px;
+    left: 7%;
+    direction: ltr;
+    color: #e0e9e0;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* SECTIONS */
+
+section:not(.hero) {
+    padding: 85px 8%;
+    scroll-margin-top: 25px;
+}
+
+.heading {
+    margin-bottom: 35px;
+}
+
+.heading.center {
+    text-align: center;
+}
+
+.heading .eyebrow {
+    display: block;
+    margin-bottom: 12px;
+}
+
+.heading h2 {
+    font-size: clamp(27px, 4vw, 41px);
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.heading p {
+    color: var(--muted);
+    line-height: 2.1;
+    max-width: 720px;
+}
+
+.heading.center p {
+    margin: auto;
+}
+
+.habitats {
+    background: #0a150e;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: var(--panel);
+    border: 1px solid #ffffff12;
+    border-radius: 14px;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #a5ff7850;
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    display: block;
+    object-fit: cover;
+    background: #17251a;
+    transition: transform .4s;
+}
+
+.card:hover img {
+    transform: scale(1.035);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.tag {
+    display: inline-block;
+    background: #a5ff7815;
+    color: var(--green);
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 10px;
+    margin-bottom: 12px;
+}
+
+.card h3 {
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 13px;
+    line-height: 2;
+    color: var(--muted);
+}
+
+.card p + p {
+    margin-top: 5px;
+}
+
+.info-button {
+    border: none;
+    background: transparent;
+    color: var(--green);
+    cursor: pointer;
+    font-weight: 700;
+    margin-top: 15px;
+}
+
+/* SEARCH */
+
+.animals {
+    background: var(--bg);
+}
+
+.search {
+    display: flex;
+    max-width: 550px;
+    margin: 0 auto 35px;
+    background: #101e15;
+    border: 1px solid #ffffff25;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.search input {
+    flex: 1;
+    width: 0;
+    min-width: 0;
+    padding: 15px;
+    background: transparent;
+    color: white;
+    border: 0;
+    outline: 0;
+}
+
+.search button {
+    border: none;
+    background: var(--green);
+    color: #07110c;
+    font-weight: 800;
+    padding: 0 20px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* BREEDS */
+
+.breeds {
+    background: #0b1710;
+}
+
+.breed-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.breed-panel {
+    padding: 25px;
+    background: var(--panel);
+    border: 1px solid #ffffff15;
+    border-radius: 14px;
+}
+
+.breed-panel h3 {
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.breed-panel > p {
+    color: var(--muted);
+    line-height: 2;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.breed-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.breed-item {
+    overflow: hidden;
+    border-radius: 9px;
+    background: #ffffff08;
+    border: 1px solid #ffffff12;
+}
+
+.breed-item img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+}
+
+.breed-item div {
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.breed-item small {
+    display: block;
+    color: var(--green);
+    font-size: 11px;
+    margin-top: 5px;
+    font-weight: 400;
+}
+
+/* CONSERVATION */
+
+.conservation {
+    background:
+        linear-gradient(270deg, #07110cf5, #07110ca5),
+        url("https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85") center/cover;
+}
+
+.conservation-content {
+    max-width: 750px;
+}
+
+.conservation h2 {
+    font-size: clamp(30px, 5vw, 48px);
+    margin: 20px 0;
+}
+
+.conservation p {
+    line-height: 2.3;
+    color: #d6e0d7;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 8%;
+    background: #040a06;
+    border-top: 1px solid #ffffff15;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+footer p {
+    color: #9ca99e;
+    font-size: 12px;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: #000c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-box {
+    max-width: 500px;
+    width: 100%;
+    background: #101e15;
+    border: 1px solid #a5ff7850;
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.modal-box h2 {
+    color: var(--green);
+    margin-bottom: 15px;
+}
+
+.modal-box p {
+    line-height: 2.2;
+    color: #d5e0d6;
+}
+
+.modal-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.close {
+    background: #ffffff12;
+    border: 0;
+    color: white;
+    border-radius: 6px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 21px;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+
+@media(max-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media(max-width: 650px) {
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo {
+        font-size: 21px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        right: 5%;
+        left: 5%;
+        padding: 18px;
+        background: #0a160ff5;
+        border: 1px solid #ffffff20;
+        border-radius: 12px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    nav.open {
+        display: flex;
+    }
+
+    nav a {
+        padding: 12px 5px;
+        border-bottom: 1px solid #ffffff10;
+    }
+
+    nav .nav-cta {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .hero {
+        min-height: 90vh;
+        padding: 130px 6% 95px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    section:not(.hero) {
+        padding: 65px 5%;
+    }
+
+    .grid,
+    .breed-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card img {
+        height: 240px;
+    }
+
+    .hero-label {
+        left: 5%;
+        font-size: 9px;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="#home" class="logo">WILD<span>WORLD.</span></a>
+
+    <button class="menu-toggle" id="menuToggle"
+        aria-label="باز کردن منو" aria-expanded="false">☰</button>
+
+    <nav id="nav">
+        <a href="#home">خانه</a>
+        <a href="#habitats">زیستگاه‌ها</a>
+        <a href="#animals">حیوانات</a>
+        <a href="#breeds">نژادها</a>
+        <a href="#conservation">حفاظت طبیعت</a>
+        <a href="#animals" class="nav-cta">کشف حیات وحش ←</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO VIDEO -->
+<section class="hero" id="home">
+
+    <video class="hero-video" autoplay muted loop playsinline
+        poster="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85">
+        <source src="wildlife.mp4" type="video/mp4">
+    </video>
+
+    <img class="hero-image"
+        src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85"
+        alt="طبیعت و حیات وحش">
+
+    <div class="hero-content">
+        <span class="eyebrow">EXPLORE THE WILD WORLD</span>
+        <h1>به دنیای<br><span>حیات وحش</span> خوش آمدی</h1>
+        <p>
+            از جنگل‌های اسرارآمیز تا اعماق اقیانوس‌ها؛
+            حیوانات شگفت‌انگیز را بشناس، زیستگاه‌هایشان را کشف کن
+            و با تنوع بی‌نظیر زندگی روی زمین آشنا شو.
+        </p>
+        <div class="actions">
+            <a class="btn btn-green" href="#animals">کشف حیوانات ←</a>
+            <a class="btn" href="#habitats">مشاهده زیستگاه‌ها</a>
+        </div>
+    </div>
+
+    <div class="hero-label">NATURE · WILDLIFE · DISCOVERY</div>
+</section>
+
+<!-- HABITATS -->
+<section class="habitats" id="habitats">
+    <div class="heading center">
+        <span class="eyebrow">NATURAL HABITATS</span>
+        <h2>خانه‌های شگفت‌انگیز طبیعت</h2>
+        <p>با محیط‌هایی آشنا شو که موجودات زنده در آن‌ها زندگی می‌کنند.</p>
+    </div>
+
+    <div class="grid" id="habitatGrid"></div>
+</section>
+
+<!-- ANIMALS -->
+<section class="animals" id="animals">
+    <div class="heading center">
+        <span class="eyebrow">WILDLIFE DATABASE</span>
+        <h2>حیوان مورد علاقه‌ات را پیدا کن</h2>
+        <p>نام حیوان را جست‌وجو کن و تصویر و اطلاعاتش را ببین.</p>
+    </div>
+
+    <div class="search">
+        <input type="search" id="searchInput"
+            placeholder="مثلاً شیر، گرگ، فیل یا عقاب..."
+            aria-label="جست‌وجوی حیوان">
+        <button id="searchButton">جست‌وجو</button>
+    </div>
+
+    <div class="grid" id="animalGrid"></div>
+
+    <p id="noResults" class="hidden"
+        style="text-align:center;color:#b2c0b4;padding:30px">
+        حیوانی پیدا نشد. نام دیگری را امتحان کن.
+    </p>
+</section>
+
+<!-- DOG AND CAT BREEDS -->
+<section class="breeds" id="breeds">
+    <div class="heading">
+        <span class="eyebrow">DOGS & CATS</span>
+        <h2>دنیای نژادهای سگ و گربه</h2>
+        <p>هر نژاد ظاهر، ویژگی‌ها و نیازهای مراقبتی متفاوتی دارد.</p>
+    </div>
+
+    <div class="breed-grid">
+        <div class="breed-panel">
+            <h3>🐕 نژادهای سگ</h3>
+            <p>با برخی از نژادهای شناخته‌شده سگ آشنا شو.</p>
+            <div class="breed-items" id="dogGrid"></div>
+        </div>
+
+        <div class="breed-panel">
+            <h3>🐈 نژادهای گربه</h3>
+            <p>چند نژاد معروف گربه با تصویر اختصاصی.</p>
+            <div class="breed-items" id="catGrid"></div>
+        </div>
+    </div>
+</section>
+
+<!-- CONSERVATION -->
+<section class="conservation" id="conservation">
+    <div class="conservation-content">
+        <span class="eyebrow">PROTECT OUR PLANET</span>
+        <h2>حفاظت از حیات وحش، حفاظت از آینده</h2>
+        <p>
+            تخریب زیستگاه‌ها، آلودگی و تغییرات اقلیمی حیات بسیاری
+            از گونه‌ها را تهدید می‌کنند. شناخت طبیعت و حفاظت از
+            محیط زندگی جانوران به حفظ تنوع زیستی کمک می‌کند.
+        </p>
+        <div class="actions">
+            <a href="#habitats" class="btn btn-green">کشف دوباره طبیعت ←</a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <a href="#home" class="logo">WILD<span>WORLD.</span></a>
+    <p>جهانی برای شناخت و حفاظت از موجودات زنده 🌿</p>
+    <p>© <span id="year"></span> WILD WORLD</p>
+</footer>
+
+<!-- INFO MODAL -->
+<div id="modal" class="modal hidden" role="dialog"
+    aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box">
+        <div class="modal-top">
+            <h2 id="modalTitle"></h2>
+            <button class="close" id="closeModal" aria-label="بستن">×</button>
+        </div>
+        <p id="modalText"></p>
+        <button class="btn btn-green" id="doneModal"
+            style="margin-top:20px">متوجه شدم</button>
+    </div>
+</div>
+
+<script>
+// ==================================================
+// 1. DATABASE: تصاویر و اطلاعات زیستگاه‌ها
+// ==================================================
+
+const habitats = [
+    {
+        name: "جنگل‌ها",
+        english: "FOREST",
+        key: "forest",
+        image: "photo-1448375240586-882707db888b",
+        description: "زیستگاه گونه‌های فراوان جانوری و گیاهی؛ از روباه و خرس تا پرندگان و حشرات.",
+        details: "جنگل‌ها منابع غذایی، پناهگاه و شرایط مناسب برای زندگی بسیاری از موجودات زنده فراهم می‌کنند."
+    },
+    {
+        name: "ساوانا",
+        english: "SAVANNA",
+        key: "savanna",
+        image: "photo-1516026672322-bc52d61a55d5",
+        description: "علفزارهای گرم با درختان پراکنده؛ خانه شیرها، زرافه‌ها و فیل‌های آفریقایی.",
+        details: "ساوانا در فصل‌های مختلف ممکن است دوره‌های خشک و بارانی داشته باشد و جانوران آن با این شرایط سازگارند."
+    },
+    {
+        name: "اقیانوس‌ها",
+        english: "OCEAN",
+        key: "ocean",
+        image: "photo-1518837695005-2083093ee35b",
+        description: "جهانی آبی با نهنگ‌ها، دلفین‌ها، ماهی‌ها و هزاران گونه دیگر.",
+        details: "اقیانوس‌ها زیستگاه‌های متنوعی دارند؛ از آب‌های سطحی و صخره‌های مرجانی تا اعماق تاریک دریا."
+    },
+    {
+        name: "مناطق قطبی",
+        english: "POLAR",
+        key: "polar",
+        image: "photo-1517299321609-52687d1bc55a",
+        description: "محیط‌های سرد با جانوران سازگار با یخ و دمای پایین.",
+        details: "خرس قطبی در شمالگان زندگی می‌کند، اما پنگوئن‌ها به‌طور طبیعی در نیمکره جنوبی هستند."
+    },
+    {
+        name: "بیابان‌ها",
+        english: "DESERT",
+        key: "desert",
+        image: "photo-1509316785289-025f5b846b35",
+        description: "محیط‌های کم‌باران که جانورانشان با کمبود آب سازگار شده‌اند.",
+        details: "بیابان‌ها همیشه داغ نیستند؛ برخی بیابان‌ها زمستان‌های سرد دارند."
+    },
+    {
+        name: "کوهستان‌ها",
+        english: "MOUNTAINS",
+        key: "mountains",
+        image: "photo-1464822759023-fed622ff2c3b",
+        description: "خانه بزهای کوهی، پلنگ برفی و پرندگان کوهستانی.",
+        details: "ارتفاع، دما و میزان اکسیژن در کوهستان تغییر می‌کند و جانوران این مناطق سازگاری‌های ویژه‌ای دارند."
+    }
+];
+
+// ==================================================
+// 2. DATABASE: حیوانات
+// هر حیوان تصویر و توضیحات مخصوص خودش را دارد.
+// ==================================================
+
+const animals = [
+    {
+        name: "شیر",
+        english: "Lion",
+        key: "lion",
+        image: "photo-1546182990-dffeafbe841d",
+        habitat: "آفریقا و بخش کوچکی از هند",
+        food: "گوشت",
+        description: "شیر از گربه‌سانان بزرگ است. بسیاری از شیرها در گروه‌هایی به نام گله زندگی می‌کنند."
+    },
+    {
+        name: "گرگ",
+        english: "Wolf",
+        key: "wolf",
+        image: "photo-1564466809058-bf4114d55352",
+        habitat: "جنگل، دشت و مناطق سرد",
+        food: "جانوران مختلف",
+        description: "گرگ‌ها از خانواده سگ‌سانان‌اند. بسیاری از آن‌ها با همکاری گروهی زندگی و شکار می‌کنند."
+    },
+    {
+        name: "فیل",
+        english: "Elephant",
+        key: "elephant",
+        image: "photo-1557050543-4d5f4e07ef46",
+        habitat: "آفریقا و بخش‌هایی از آسیا",
+        food: "گیاهان، برگ و میوه",
+        description: "فیل‌ها بزرگ‌ترین جانوران خشکی‌زی امروزی هستند و از خرطوم خود برای بو کشیدن، گرفتن غذا و نوشیدن آب استفاده می‌کنند."
+    },
+    {
+        name: "روباه",
+        english: "Fox",
+        key: "fox",
+        image: "photo-1474511320723-9a56873867b5",
+        habitat: "جنگل، دشت و برخی بیابان‌ها",
+        food: "جانوران کوچک و مواد گیاهی",
+        description: "روباه‌ها از سگ‌سانان هستند و بسیاری از گونه‌هایشان می‌توانند در محیط‌های متنوع زندگی کنند."
+    },
+    {
+        name: "عقاب",
+        english: "Eagle",
+        key: "eagle",
+        image: "photo-1611689342806-0863700ce1e4",
+        habitat: "کوهستان، جنگل و دشت",
+        food: "بسته به گونه، ماهی و جانوران دیگر",
+        description: "عقاب‌ها پرندگان شکاری هستند که بینایی قوی و چنگال‌های نیرومند دارند."
+    },
+    {
+        name: "پنگوئن",
+        english: "Penguin",
+        key: "penguin",
+        image: "photo-1551986782-d0169b3f8fa7",
+        habitat: "نیمکره جنوبی",
+        food: "ماهی و جانوران دریایی کوچک",
+        description: "پنگوئن‌ها پرواز نمی‌کنند اما شناگران بسیار خوبی‌اند. همه گونه‌های آن‌ها در جنوبگان زندگی نمی‌کنند."
+    },
+    {
+        name: "زرافه",
+        english: "Giraffe",
+        key: "giraffe",
+        image: "photo-1517849845537-4d257902454a",
+        habitat: "ساوانا و مناطق باز آفریقا",
+        food: "برگ درختان",
+        description: "زرافه بلندترین جانور خشکی‌زی امروزی است و گردن بلندش به رسیدن به برگ‌های درختان کمک می‌کند."
+    },
+    {
+        name: "خرس پاندا",
+        english: "Panda",
+        key: "panda",
+        image: "photo-1564349683136-77e08dba1ef7",
+        habitat: "جنگل‌های کوهستانی چین",
+        food: "عمدتاً بامبو",
+        description: "پاندای بزرگ بیشتر از بامبو تغذیه می‌کند و به جنگل‌های کوهستانی دارای پوشش مناسب نیاز دارد."
+    },
+    {
+        name: "دلفین",
+        english: "Dolphin",
+        key: "dolphin",
+        image: "photo-1607153333879-c174d265f1d2",
+        habitat: "دریاها و اقیانوس‌ها",
+        food: "ماهی و جانوران دریایی",
+        description: "دلفین‌ها پستاندارانی دریایی هستند که برای تنفس به سطح آب می‌آیند و از صداها برای ارتباط و جهت‌یابی استفاده می‌کنند."
+    }
+];
+
+// ==================================================
+// 3. DATABASE: نژادهای سگ
+// ==================================================
+
+const dogs = [
+    {
+        name: "ژرمن شپرد",
+        key: "german",
+        image: "photo-1589941013453-ec89f33b5e95",
+        trait: "فعال و آموزش‌پذیر"
+    },
+    {
+        name: "گلدن رتریور",
+        key: "golden",
+        image: "photo-1552053831-71594a27632d",
+        trait: "اجتماعی و پرانرژی"
+    },
+    {
+        name: "هاسکی",
+        key: "husky",
+        image: "photo-1605568427561-40dd23c2acea",
+        trait: "فعال و سازگار با سرما"
+    },
+    {
+        name: "لابرادور",
+        key: "labrador",
+        image: "photo-1518717758536-85ae29035b6d",
+        trait: "فعال و اجتماعی"
+    },
+    {
+        name: "پامرانین",
+        key: "pomeranian",
+        image: "photo-1558944351-c7c8e8f9e9b5",
+        trait: "کوچک و پرجنب‌وجوش"
+    },
+    {
+        name: "شیتزو",
+        key: "shihtzu",
+        image: "photo-1583337130417-3346a1be7dee",
+        trait: "نیازمند مراقبت از مو"
+    }
+];
+
+// ==================================================
+// 4. DATABASE: نژادهای گربه
+// ==================================================
+
+const cats = [
+    {
+        name: "پرشین",
+        key: "persian",
+        image: "photo-1573865526739-10659fec78a5",
+        trait: "موهای بلند"
+    },
+    {
+        name: "سیامی",
+        key: "siamese",
+        image: "photo-1513360371669-4adf3dd7dff8",
+        trait: "اجتماعی و پرصدا"
+    },
+    {
+        name: "مین کون",
+        key: "mainecoon",
+        image: "photo-1533738363-b7f9aef128ce",
+        trait: "جثه بزرگ و موی بلند"
+    },
+    {
+        name: "بنگال",
+        key: "bengal",
+        image: "photo-1514888286974-6c03e2ca1dba",
+        trait: "پوشش خال‌دار"
+    },
+    {
+        name: "بریتیش شورت‌هیر",
+        key: "british",
+        image: "photo-1495360010541-f48722b34f7d",
+        trait: "موهای کوتاه و متراکم"
+    },
+    {
+        name: "اسکاتیش فولد",
+        key: "scottish",
+        image: "photo-1511044568932-338cba0ad803",
+        trait: "گوش‌های تاخورده"
+    }
+];
+
+// ==================================================
+// 5. IMAGE HELPER
+// ساخت آدرس عکس جداگانه برای هر موجود یا مکان
+// ==================================================
+
+function imageURL(photoId, width = 850) {
+    return `https://images.unsplash.com/${photoId}?auto=format&fit=crop&w=${width}&q=85`;
+}
+
+function makeImage(photoId, alt, width = 850) {
+    const img = document.createElement("img");
+
+    img.src = imageURL(photoId, width);
+    img.alt = alt;
+    img.loading = "lazy";
+    img.onerror = function () {
+        this.onerror = null;
+        this.alt = "تصویر در دسترس نیست";
+        this.style.minHeight = "180px";
+    };
+
+    return img;
+}
+
+// ==================================================
+// 6. RENDER HABITATS
+// ==================================================
+
+const habitatGrid = document.getElementById("habitatGrid");
+
+habitats.forEach(item => {
+    const card = document.createElement("article");
+    card.className = "card";
+
+    card.appendChild(makeImage(item.image, item.name));
+
+    const body = document.createElement("div");
+    body.className = "card-body";
+
+    const tag = document.createElement("span");
+    tag.className = "tag";
+    tag.textContent = item.english.toUpperCase();
+
+    const title = document.createElement("h3");
+    title.textContent = item.name;
+
+    const description = document.createElement("p");
+    description.textContent = item.description;
+
+    const button = document.createElement("button");
+    button.className = "info-button";
+    button.textContent = "اطلاعات بیشتر ←";
+    button.addEventListener("click", () => {
+        showModal(item.name, item.details);
+    });
+
+    body.append(tag, title, description, button);
+    card.appendChild(body);
+    habitatGrid.appendChild(card);
+});
+
+// ==================================================
+// 7. RENDER ANIMALS
+// ==================================================
+
+const animalGrid = document.getElementById("animalGrid");
+
+function renderAnimals(list) {
+    animalGrid.replaceChildren();
+
+    list.forEach(item => {
+        const card = document.createElement("article");
+        card.className = "card";
+
+        card.appendChild(makeImage(item.image, item.name));
+
+        const body = document.createElement("div");
+        body.className = "card-body";
+
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = item.english.toUpperCase();
+
+        const title = document.createElement("h3");
+        title.textContent = item.name;
+
+        const habitat = document.createElement("p");
+        habitat.textContent = "زیستگاه: " + item.habitat;
+
+        const food = document.createElement("p");
+        food.textContent = "تغذیه: " + item.food;
+
+        const button = document.createElement("button");
+        button.className = "info-button";
+        button.textContent = "اطلاعات کامل‌تر ←";
+        button.addEventListener("click", () => {
+            showModal(item.name, item.description);
+        });
+
+        body.append(tag, title, habitat, food, button);
+        card.appendChild(body);
+        animalGrid.appendChild(card);
+    });
+
+    document.getElementById("noResults")
+        .classList.toggle("hidden", list.length !== 0);
+}
+
+renderAnimals(animals);
+
+// ==================================================
+// 8. SEARCH ANIMALS
+// ==================================================
+
+const searchInput = document.getElementById("searchInput");
+
+function searchAnimals() {
+    const query = searchInput.value.trim().toLocaleLowerCase("fa");
+
+    const filtered = animals.filter(item => {
+        const searchable = [
+            item.name,
+            item.english,
+            item.habitat,
+            item.food,
+            item.description
+        ].join(" ").toLocaleLowerCase("fa");
+
+        return searchable.includes(query);
+    });
+
+    renderAnimals(filtered);
+}
+
+document.getElementById("searchButton")
+    .addEventListener("click", searchAnimals);
+
+searchInput.addEventListener("input", searchAnimals);
+
+searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") searchAnimals();
+});
+
+// ==================================================
+// 9. RENDER DOG AND CAT BREEDS
+// ==================================================
+
+function renderBreeds(list, containerId) {
+    const container = document.getElementById(containerId);
+
+    list.forEach(item => {
+        const breed = document.createElement("article");
+        breed.className = "breed-item";
+
+        breed.appendChild(makeImage(item.image, item.name, 500));
+
+        const info = document.createElement("div");
+        info.textContent = item.name;
+
+        const trait = document.createElement("small");
+        trait.textContent = item.trait;
+
+        info.appendChild(trait);
+        breed.appendChild(info);
+        container.appendChild(breed);
+    });
+}
+
+renderBreeds(dogs, "dogGrid");
+renderBreeds(cats, "catGrid");
+
+// ==================================================
+// 10. INFO MODAL
+// ==================================================
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalText = document.getElementById("modalText");
+let previousFocus = null;
+
+function showModal(title, text) {
+    previousFocus = document.activeElement;
+    modalTitle.textContent = title;
+    modalText.textContent = text;
+    modal.classList.remove("hidden");
+    document.getElementById("closeModal").focus();
+}
+
+function closeModal() {
+    modal.classList.add("hidden");
+
+    if (previousFocus) previousFocus.focus();
+}
+
+document.getElementById("closeModal")
+    .addEventListener("click", closeModal);
+
+document.getElementById("doneModal")
+    .addEventListener("click", closeModal);
+
+modal.addEventListener("click", event => {
+    if (event.target === modal) closeModal();
+});
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !modal.classList.contains("hidden")) {
+        closeModal();
+    }
+});
+
+// ==================================================
+// 11. MOBILE MENU
+// ==================================================
+
+const menuToggle = document.getElementById("menuToggle");
+const nav = document.getElementById("nav");
+
+menuToggle.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+
+    menuToggle.textContent = open ? "✕" : "☰";
+    menuToggle.setAttribute("aria-expanded", String(open));
+});
+
+nav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("open");
+        menuToggle.textContent = "☰";
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
+});
+
+// ==================================================
+// 12. VIDEO FALLBACK + FOOTER
+// ==================================================
+
+const video = document.querySelector(".hero-video");
+const heroImage = document.querySelector(".hero-image");
+
+video.addEventListener("error", () => {
+    video.style.display = "none";
+    heroImage.style.display = "block";
+});
+
+document.getElementById("year").textContent =
+    new Date().getFullYear();
+</script>
+
+</body>
+</html>
